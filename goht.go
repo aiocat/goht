@@ -18,24 +18,29 @@ type DomElement struct {
 type DomElementList []DomElement
 
 // Convert document element to string
-func (de DomElement) C() string {
-	generated := "<" + de.Key
+func (element DomElement) C() string {
+	generated := "<" + element.Key
 
-	for key, elem := range de.Props {
+	for key, elem := range element.Props {
 		generated += " " + key + "=\"" + elem + "\""
 	}
 
-	generated += ">" + de.Value + "</" + de.Key + ">"
+	generated += ">" + element.Value + "</" + element.Key + ">"
 	return generated
 }
 
 // Convert document element list to string
-func (del DomElementList) C() string {
+func (elementsList DomElementList) C() string {
 	generated := ""
 
-	for _, elem := range del {
+	for _, elem := range elementsList {
 		generated += elem.C()
 	}
 
 	return generated
+}
+
+// Mark document as HTML
+func Html(elements ...DomElement) string {
+	return "<!DOCTYPE html>\n" + DomList(elements...)
 }
