@@ -5,15 +5,19 @@
 
 package goht
 
+// Props type
 type Props map[string]string
 
+// Document element struct
 type DomElement struct {
 	Key, Value string
 	Props      Props
 }
 
-type DomList []DomElement
+// Document element list
+type DomElementList []DomElement
 
+// Convert document element to string
 func (de DomElement) C() string {
 	generated := "<" + de.Key
 
@@ -25,10 +29,11 @@ func (de DomElement) C() string {
 	return generated
 }
 
-func (dl DomList) C() string {
+// Convert document element list to string
+func (del DomElementList) C() string {
 	generated := ""
 
-	for _, elem := range dl {
+	for _, elem := range del {
 		generated += elem.C()
 	}
 

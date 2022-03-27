@@ -8,18 +8,14 @@ package goht
 import "testing"
 
 func TestDomElement(t *testing.T) {
-	dom := DomElement{
+	dom := Dom(
 		"body",
-		DomList{
-			DomElement{
-				"h1", "Hello World", Props{"id": "title"},
-			},
-			DomElement{
-				"p", "An Example?", Props{"id": "example"},
-			},
-		}.C(),
+		DomList(
+			RawDom("h1", "Hello World", Props{"id": "title"}),
+			RawDom("p", "An Example", Props{"id": "paragraph"}),
+		),
 		Props{},
-	}.C()
+	)
 
 	println(dom)
 }
