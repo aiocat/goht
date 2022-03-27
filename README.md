@@ -15,6 +15,7 @@ Goht allows you to generate html in server-side part with flexible usage.
 title := "Hello World"
 
 dom := goht.Html(
+    goht.Props{"lang": "en"},
     goht.RawDom(
         "body",
         goht.DomList(

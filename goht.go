@@ -41,6 +41,6 @@ func (elementsList DomElementList) C() string {
 }
 
 // Mark document as HTML
-func Html(elements ...DomElement) string {
-	return "<!DOCTYPE html>\n" + DomList(elements...)
+func Html(props Props, elements ...DomElement) string {
+	return "<!DOCTYPE html>\n" + Dom("html", DomList(elements...), props)
 }

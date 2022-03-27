@@ -9,6 +9,7 @@ import "testing"
 
 func TestDomElement(t *testing.T) {
 	dom := Html(
+		Props{"lang": "en"},
 		RawDom(
 			"body",
 			DomList(
