@@ -19,11 +19,7 @@ type DomElementList []DomElement
 
 // Convert document element to string
 func (element DomElement) C() string {
-	generated := "<" + element.Key
-
-	for key, elem := range element.Props {
-		generated += " " + key + "=\"" + elem + "\""
-	}
+	generated := "<" + element.Key + element.Props.Build()
 
 	generated += ">" + element.Value + "</" + element.Key + ">"
 	return generated
@@ -35,6 +31,16 @@ func (elementsList DomElementList) C() string {
 
 	for _, elem := range elementsList {
 		generated += elem.C()
+	}
+
+	return generated
+}
+
+// Build props
+func (p Props) Build() string {
+	generated := ""
+	for key, elem := range p {
+		generated += " " + key + "=\"" + elem + "\""
 	}
 
 	return generated
