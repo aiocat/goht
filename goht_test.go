@@ -17,6 +17,7 @@ func TestDomElement(t *testing.T) {
 			DomList(
 				RawDom("h1", Encode(title), Props{"id": "title"}),
 				RawDom("p", "An Example", Props{"id": "paragraph"}),
+				RawDom("img", "", Props{"src": "https://raw.githubusercontent.com/aiocat/args/main/static/img/logo.png"}),
 			),
 			Props{},
 		),

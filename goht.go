@@ -23,7 +23,12 @@ type DomElementList []DomElement
 func (element DomElement) C() string {
 	generated := "<" + element.Key + element.Props.Build()
 
-	generated += ">" + element.Value + "</" + element.Key + ">"
+	if element.Key == "area" || element.Key == "base" || element.Key == "br" || element.Key == "col" || element.Key == "embed" || element.Key == "hr" || element.Key == "img" || element.Key == "input" || element.Key == "link" || element.Key == "meta" || element.Key == "param" || element.Key == "source" || element.Key == "track" || element.Key == "wbr" {
+		generated += " />"
+	} else {
+		generated += element.Value + "</" + element.Key + ">"
+	}
+
 	return generated
 }
 
