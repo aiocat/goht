@@ -5,6 +5,8 @@
 
 package goht
 
+import "fmt"
+
 // Props type
 type Props map[string]string
 
@@ -49,4 +51,15 @@ func (p Props) Build() string {
 // Mark document as HTML
 func Html(props Props, elements ...DomElement) string {
 	return "<!DOCTYPE html>\n" + Dom("html", DomList(elements...), props)
+}
+
+// Encode string for prevent XSS attack
+func Encode(body string) string {
+	generated := ""
+
+	for _, char := range body {
+		generated += fmt.Sprintf("&#%d;", char)
+	}
+
+	return generated
 }

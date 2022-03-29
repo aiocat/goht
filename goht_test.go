@@ -8,13 +8,14 @@ package goht
 import "testing"
 
 func TestDomElement(t *testing.T) {
-	title := "Merhaba"
+	title := "<script>alert(1)</script>"
+
 	dom := Html(
 		Props{"lang": "en"},
 		RawDom(
 			"body",
 			DomList(
-				RawDom("h1", title, Props{"id": "title"}),
+				RawDom("h1", Encode(title), Props{"id": "title"}),
 				RawDom("p", "An Example", Props{"id": "paragraph"}),
 			),
 			Props{},
