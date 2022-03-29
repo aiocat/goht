@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Bi Anlatsana
+// Copyright (c) 2022 aiocat
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
@@ -58,7 +58,7 @@ func Html(props Props, elements ...DomElement) string {
 	return "<!DOCTYPE html>\n" + Dom("html", DomList(elements...), props)
 }
 
-// Encode string for prevent XSS attack
+// Encode string to prevent XSS attack
 func Encode(body string) string {
 	generated := ""
 
